@@ -11,6 +11,14 @@ class FreeType2 : public node::ObjectWrap {
 
     static FT_Library library;
 
+    static int move_to(const FT_Vector* to, void *p);
+    static int line_to(const FT_Vector* to, void *p);
+    static int quad_to(const FT_Vector*  cp, const FT_Vector*  to, void *p);
+    static int cubic_to(const FT_Vector*  cp1,
+         const FT_Vector*  cp2,
+         const FT_Vector*  to,
+         void *p);
+    
   private:
     explicit FreeType2();
     ~FreeType2();
@@ -34,6 +42,8 @@ class FreeType2 : public node::ObjectWrap {
     static NAN_METHOD(Get_Char_Index);
     static NAN_METHOD(Get_First_Char);
     static NAN_METHOD(Get_Next_Char);
+    static NAN_METHOD(Outline_Decompose);
+    
     // static NAN_METHOD(Get_Name_Index);
     // static NAN_METHOD(Get_SubGlyph_Info);
 

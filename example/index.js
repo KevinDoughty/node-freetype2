@@ -28,6 +28,7 @@ fs.readFile(process.argv[2], function(err, buffer) {
   var chars = getAvailableCharacters(face);
   console.log("Found "+chars.length+" available characters");
 
+  //check if we have kerning in the font file
   if ( (face.face_flags & ft.FACE_FLAG_KERNING) === ft.FACE_FLAG_KERNING ) {
     var kernings = [];
 
@@ -56,4 +57,28 @@ fs.readFile(process.argv[2], function(err, buffer) {
   } else {
     console.warn("No kerning information in font file.");
   }
+
+  ft.Set_Char_Size(face, 32 * 64, 32 * 64, 72, 72);
+
+  //FT_GLYPH_FORMAT_OUTLINE
+  ft.Load_Glyph(face, ft.Get_Char_Index(face, '.'.charCodeAt(0)), ft.LOAD_DEFAULT);
+  if (face.glyph.format === ft.GLYPH_FORMAT_OUTLINE) {
+    console.log("Glyph outline found.");
+
+    ft.Outline_Decompose(face, {
+      move_to: function(x, y) {
+        console.log("move_to:", x, y);
+      },
+      line_to: function(x, y) {
+        console.log("line_to:", x, y);
+      },
+      quad_to: function(cx, cy, x, y) {
+        console.log("quad_to:", cx, cy, x, y);
+      },
+      cubic_to: function(cx1, cy1, cx2, cy2, x, y) {
+        console.log("cubic_to:", cx1, cy1, cx2, cy2, x, y);
+      },
+    });
+  }
+
 });
