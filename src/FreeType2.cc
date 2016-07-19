@@ -349,7 +349,8 @@ int FreeType2::move_to(const FT_Vector* to, void *p) {
   if (funcs->IsObject() && funcs->Has(Nan::New("move_to").ToLocalChecked())) {
     v8::Local<v8::Value> fn = funcs->Get(Nan::New("move_to").ToLocalChecked());
     if (!fn->IsFunction()) {
-      v8::ThrowException(v8::String::New("move_to for Outline_Decompose must be a function"));
+      v8::Isolate* isolate = v8::Isolate::GetCurrent();
+      isolate->ThrowException(v8::String::NewFromUtf8(isolate, "move_to for Outline_Decompose must be a function"));
       return 1;
     }
     v8::Local<v8::Value> info[2];
@@ -359,7 +360,8 @@ int FreeType2::move_to(const FT_Vector* to, void *p) {
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 2, info );
     return 0;
   } else {
-    v8::ThrowException(v8::String::New("must define a move_to() function for Outline_Decompose"));
+    v8::Isolate* isolate = v8::Isolate::GetCurrent();
+    isolate->ThrowException(v8::String::NewFromUtf8(isolate, "must define a move_to() function for Outline_Decompose"));
     return 1;
   }
 }
@@ -371,7 +373,8 @@ int FreeType2::line_to(const FT_Vector* to, void *p) {
   if (funcs->IsObject() && funcs->Has(Nan::New("line_to").ToLocalChecked())) {
     v8::Local<v8::Value> fn = funcs->Get(Nan::New("line_to").ToLocalChecked());
     if (!fn->IsFunction()) {
-      v8::ThrowException(v8::String::New("line_to for Outline_Decompose must be a function"));
+      v8::Isolate* isolate = v8::Isolate::GetCurrent();
+      isolate->ThrowException(v8::String::NewFromUtf8(isolate, "line_to for Outline_Decompose must be a function"));
       return 1;
     }
     v8::Local<v8::Value> info[2];
@@ -381,7 +384,8 @@ int FreeType2::line_to(const FT_Vector* to, void *p) {
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 2, info );
     return 0;
   } else {
-    v8::ThrowException(v8::String::New("must define a line_to() function for Outline_Decompose"));
+    v8::Isolate* isolate = v8::Isolate::GetCurrent();
+    isolate->ThrowException(v8::String::NewFromUtf8(isolate, "must define a line_to() function for Outline_Decompose"));
     return 1;
   }
 }
@@ -393,7 +397,8 @@ int FreeType2::quad_to(const FT_Vector*  cp, const FT_Vector*  to, void *p) {
   if (funcs->IsObject() && funcs->Has(Nan::New("quad_to").ToLocalChecked())) {
     v8::Local<v8::Value> fn = funcs->Get(Nan::New("quad_to").ToLocalChecked());
     if (!fn->IsFunction()) {
-      v8::ThrowException(v8::String::New("quad_to for Outline_Decompose must be a function"));
+      v8::Isolate* isolate = v8::Isolate::GetCurrent();
+      isolate->ThrowException(v8::String::NewFromUtf8(isolate, "quad_to for Outline_Decompose must be a function"));
       return 1;
     }
     v8::Local<v8::Value> info[4];
@@ -405,7 +410,8 @@ int FreeType2::quad_to(const FT_Vector*  cp, const FT_Vector*  to, void *p) {
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 4, info );
     return 0;
   } else {
-    v8::ThrowException(v8::String::New("must define a quad_to() function for Outline_Decompose"));
+    v8::Isolate* isolate = v8::Isolate::GetCurrent();
+    isolate->ThrowException(v8::String::NewFromUtf8(isolate, "must define a quad_to() function for Outline_Decompose"));
     return 1;
   }
 }
@@ -419,7 +425,8 @@ int FreeType2::cubic_to(const FT_Vector*  cp1,
   if (funcs->IsObject() && funcs->Has(Nan::New("cubic_to").ToLocalChecked())) {
     v8::Local<v8::Value> fn = funcs->Get(Nan::New("cubic_to").ToLocalChecked());
     if (!fn->IsFunction()) {
-      v8::ThrowException(v8::String::New("cubic_to for Outline_Decompose must be a function"));
+      v8::Isolate* isolate = v8::Isolate::GetCurrent();
+      isolate->ThrowException(v8::String::NewFromUtf8(isolate, "cubic_to for Outline_Decompose must be a function"));
       return 1;
     }
     v8::Local<v8::Value> info[6];
@@ -433,7 +440,8 @@ int FreeType2::cubic_to(const FT_Vector*  cp1,
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 6, info );
     return 0;
   } else {
-    v8::ThrowException(v8::String::New("must define a cubic_to() function for Outline_Decompose"));
+    v8::Isolate* isolate = v8::Isolate::GetCurrent();
+    isolate->ThrowException(v8::String::NewFromUtf8(isolate, "must define a cubic_to() function for Outline_Decompose"));
     return 1;
   }
 }
