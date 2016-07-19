@@ -354,8 +354,8 @@ int FreeType2::move_to(const FT_Vector* to, void *p) {
       return 1;
     }
     v8::Local<v8::Value> info[2];
-    info[0] = v8::Integer::New(to->x);
-    info[1] = v8::Integer::New(to->y);
+    info[0] = Nan::New((int32_t)to->x);
+    info[1] = Nan::New((int32_t)to->y);
 
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 2, info );
     return 0;
@@ -378,8 +378,8 @@ int FreeType2::line_to(const FT_Vector* to, void *p) {
       return 1;
     }
     v8::Local<v8::Value> info[2];
-    info[0] = v8::Integer::New(to->x);
-    info[1] = v8::Integer::New(to->y);
+    info[0] = Nan::New((int32_t)to->x);
+    info[1] = Nan::New((int32_t)to->y);
 
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 2, info );
     return 0;
@@ -402,10 +402,10 @@ int FreeType2::quad_to(const FT_Vector*  cp, const FT_Vector*  to, void *p) {
       return 1;
     }
     v8::Local<v8::Value> info[4];
-    info[0] = v8::Integer::New(cp->x);
-    info[1] = v8::Integer::New(cp->y);
-    info[2] = v8::Integer::New(to->x);
-    info[3] = v8::Integer::New(to->y);
+    info[0] = Nan::New((int32_t)cp->x);
+    info[1] = Nan::New((int32_t)cp->y);
+    info[2] = Nan::New((int32_t)to->x);
+    info[3] = Nan::New((int32_t)to->y);
 
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 4, info );
     return 0;
@@ -430,12 +430,12 @@ int FreeType2::cubic_to(const FT_Vector*  cp1,
       return 1;
     }
     v8::Local<v8::Value> info[6];
-    info[0] = v8::Integer::New(cp1->x);
-    info[1] = v8::Integer::New(cp1->y);
-    info[2] = v8::Integer::New(cp2->x);
-    info[3] = v8::Integer::New(cp2->y);
-    info[4] = v8::Integer::New(to->x);
-    info[5] = v8::Integer::New(to->y);
+    info[0] = Nan::New((int32_t)cp1->x);
+    info[1] = Nan::New((int32_t)cp1->y);
+    info[2] = Nan::New((int32_t)cp2->x);
+    info[3] = Nan::New((int32_t)cp2->y);
+    info[4] = Nan::New((int32_t)to->x);
+    info[5] = Nan::New((int32_t)to->y);
 
     v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 6, info );
     return 0;
