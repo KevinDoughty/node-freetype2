@@ -445,5 +445,3 @@ int FreeType2::cubic_to(const FT_Vector*  cp1,
     return 1;
   }
 }
-
-FT_Library FreeType2::library;
