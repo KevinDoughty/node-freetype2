@@ -357,7 +357,7 @@ int FreeType2::move_to(const FT_Vector* to, void *p) {
     info[0] = Nan::New((int32_t)to->x);
     info[1] = Nan::New((int32_t)to->y);
 
-    v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 2, info );
+    v8::Local<v8::Function>::Cast(fn)->Call( Nan::GetCurrentContext()->Global(), 2, info );
     return 0;
   } else {
     v8::Isolate* isolate = v8::Isolate::GetCurrent();
@@ -381,7 +381,7 @@ int FreeType2::line_to(const FT_Vector* to, void *p) {
     info[0] = Nan::New((int32_t)to->x);
     info[1] = Nan::New((int32_t)to->y);
 
-    v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 2, info );
+    v8::Local<v8::Function>::Cast(fn)->Call( Nan::GetCurrentContext()->Global(), 2, info );
     return 0;
   } else {
     v8::Isolate* isolate = v8::Isolate::GetCurrent();
@@ -407,7 +407,7 @@ int FreeType2::quad_to(const FT_Vector*  cp, const FT_Vector*  to, void *p) {
     info[2] = Nan::New((int32_t)to->x);
     info[3] = Nan::New((int32_t)to->y);
 
-    v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 4, info );
+    v8::Local<v8::Function>::Cast(fn)->Call( Nan::GetCurrentContext()->Global(), 4, info );
     return 0;
   } else {
     v8::Isolate* isolate = v8::Isolate::GetCurrent();
@@ -437,7 +437,7 @@ int FreeType2::cubic_to(const FT_Vector*  cp1,
     info[4] = Nan::New((int32_t)to->x);
     info[5] = Nan::New((int32_t)to->y);
 
-    v8::Local<v8::Function>::Cast(fn)->Call( v8::Context::GetCurrent()->Global(), 6, info );
+    v8::Local<v8::Function>::Cast(fn)->Call( Nan::GetCurrentContext()->Global(), 6, info );
     return 0;
   } else {
     v8::Isolate* isolate = v8::Isolate::GetCurrent();
